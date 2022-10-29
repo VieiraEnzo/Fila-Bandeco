@@ -13,7 +13,7 @@ def index():
 def index_login_aluno():
     return render_template("index.html", popup = "block")
 
-#Validar o Login de um Aluno
+#Funcao para validar o Login de um Aluno
 @app.route("/login_aluno", methods = ["POST"])
 def index_login_aluno_post():
     identificador = request.form["identificador"]
@@ -31,14 +31,14 @@ def regis_aluno():
 def regis_aluno_post():
     nome = request.form["nome"]
     sobrenome = request.form["sobrenome"]
-    nome = nome + " " + sobrenome
+    nome = nome + " " + sobrenome  #concatena o nome principal com o sobrenome
     cpf = request.form["cpf"]
     telefone = request.form["telefone"]
     email = request.form["email"]
     dre = request.form["dre"]
     senha = request.form["senha"]
     re_senha = request.form["re_senha"]
-    if senha == re_senha:
+    if senha == re_senha:         #compara se as senhas sao igual e retorna um erro se nao forem
         return Control.registrar_aluno(nome, cpf, telefone, email, dre, senha)
     else:
         return render_template("regis_aluno.html", erro = "erroSENHA")
