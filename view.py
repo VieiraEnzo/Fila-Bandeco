@@ -7,14 +7,6 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return render_template("index.html", popup = "none")
-<<<<<<< HEAD
-
-
-@app.route("/login")
-def index_login():
-    return render_template("regis_aluno.html", popup = "block")
-    
-=======
 
 #Pagina inicial com o popup de login
 @app.route("/login_aluno")
@@ -53,7 +45,6 @@ def regis_aluno_post():
 
 
 
->>>>>>> e597c4bdeedaa55233961c588fda0f7b7f636f2d
 
 app.run()
 
