@@ -6,6 +6,15 @@
     </head>
     <body>
         <h1>Página principal</h1>
-        <a href="/login"></a>
+        <form action="/login_aluno" style='display: {{popup}}'/>
+            <label>Identificador</label>
+            <input type="text" name="indetificador"/>
+            <br>
+            <label>Senha</label>
+            <input type="text" name="senha"/>
+            <br>
+            <input type="submit">
+        </form>
+        <a href="/login">login</a>
     </body>
 </html>
