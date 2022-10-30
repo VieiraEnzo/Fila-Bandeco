@@ -12,4 +12,12 @@ class AlunoDAO:
         conn.commit()
 
         return userId[0][0]
+    
+    def efetuarLogin(self, aluno):
+        fetch = c.execute("select rowid, * from aluno where cpf = '"+aluno.get_cpf()+"' and senha = '"+aluno.get_senha()+"' ").fetchall()
+        print(fetch)
+        conn.commit()
+
+        return fetch
+        
         

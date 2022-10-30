@@ -1,7 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, session
+from flask_session import Session
 from control import Control
 
 app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 #Pagina inicial do projeto
 @app.route("/")
@@ -18,8 +22,14 @@ def index_login_aluno():
 def index_login_aluno_post():
     identificador = request.form["identificador"]
     senha = request.form["senha"]
-    return Control.valida_senha_aluno(identificador,senha)
-
+    a = Control()
+    fetch = a.login_aluno(identificador,senha) 
+    if(len(fetch) == 0):
+        return render_template("index.html", erro = "erroLogin")
+    else:
+        session["id"] = fetch
+        return render_template("index.html", erro = fetch)
+    
 
 #Site de Cadastro do aluno
 @app.route("/regis_aluno")
@@ -41,6 +51,7 @@ def regis_aluno_post():
     re_senha = request.form["re_senha"]
     a = Control()
     if senha == re_senha:         #compara se as senhas sao igual e retorna um erro se nao forem
+        
         return a.registrar_aluno(nome, cpf, telefone, email, dre, senha)
     else:
         return render_template("regis_aluno.html", erro = "erroSENHA")

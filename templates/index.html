@@ -7,8 +7,8 @@
     <body>
         <h1>Página principal</h1>
         <form method="POST" action="/login_aluno" style='display: {{popup}}'/>
-            <label>Identificador</label>
-            <input type="text" name="indetificador"/>
+            <label>cpf</label>
+            <input type="text" name="identificador"/>
             <br>
             <label>Senha</label>
             <input type="text" name="senha"/>
@@ -17,6 +17,6 @@
         </form>
         <a href="/login_aluno">login</a>
         <a href="/regis_aluno">regis</a>
-        <h1>{{errorVar}}</h1>
+        <h1>{{erro}}</h1>
     </body>
 </html>
