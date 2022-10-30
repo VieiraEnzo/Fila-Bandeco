@@ -24,11 +24,13 @@ def index_login_aluno_post():
 #Site de Cadastro do aluno
 @app.route("/regis_aluno")
 def regis_aluno():
-    render_template("regis_aluno.html")
+    return render_template("regis_aluno.html")
 
 #Cadastra o aluno dentro do banco de dados
+#adicionar outras exceções e usar try
 @app.route("/regis_aluno", methods = ["POST"])
 def regis_aluno_post():
+    print("Cheguei aqui")
     nome = request.form["nome"]
     sobrenome = request.form["sobrenome"]
     nome = nome + " " + sobrenome  #concatena o nome principal com o sobrenome
@@ -42,7 +44,6 @@ def regis_aluno_post():
         return Control.registrar_aluno(nome, cpf, telefone, email, dre, senha)
     else:
         return render_template("regis_aluno.html", erro = "erroSENHA")
-
 
 
 
