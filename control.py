@@ -3,9 +3,6 @@ from model import Aluno
 from dao import AlunoDAO
 
 class Control:
-    aluno = None
-    alunoDAO = None
-
     def __init__(self):
         self.aluno = Aluno()
         self.alunoDAO = AlunoDAO()
@@ -24,12 +21,15 @@ class Control:
         #else:
             ##################### adicionar no banco de dados
         self.aluno.set_nome(nome)
+        print(self.aluno.get_nome())
         self.aluno.set_cpf(cpf)
         self.aluno.set_telefone(telefone)
         self.aluno.set_email(email)
         self.aluno.set_senha(senha)
         self.aluno.set_dre(dre)
+        print(self.aluno)
         userId = self.alunoDAO.inserir(self.aluno)
+        self.aluno.set_id_aluno = userId
 
         return render_template("index.html", errorVar = 0)
 

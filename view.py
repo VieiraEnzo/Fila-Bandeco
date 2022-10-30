@@ -30,7 +30,6 @@ def regis_aluno():
 #adicionar outras exceções e usar try
 @app.route("/regis_aluno", methods = ["POST"])
 def regis_aluno_post():
-    print("Cheguei aqui")
     nome = request.form["nome"]
     sobrenome = request.form["sobrenome"]
     nome = nome + " " + sobrenome  #concatena o nome principal com o sobrenome
@@ -40,8 +39,9 @@ def regis_aluno_post():
     dre = request.form["dre"]
     senha = request.form["senha"]
     re_senha = request.form["re_senha"]
+    a = Control()
     if senha == re_senha:         #compara se as senhas sao igual e retorna um erro se nao forem
-        return Control.registrar_aluno(nome, cpf, telefone, email, dre, senha)
+        return a.registrar_aluno(nome, cpf, telefone, email, dre, senha)
     else:
         return render_template("regis_aluno.html", erro = "erroSENHA")
 
