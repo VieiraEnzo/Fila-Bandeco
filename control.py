@@ -1,9 +1,11 @@
+from flask import render_template
+
 class Control:
 
     #Checa se o login do aluno é valido
     def valida_senha_aluno(self, identificador,senha):
         if: ##########econtrou no banco de dados
-            return render_template("aluno_main.html")
+            return render_template("agendamento.html")
         else:
             return render_template("index.html", popup = "block", erro = "erroLOGIN")
 
@@ -14,3 +16,19 @@ class Control:
         else:
             ##################### adicionar no banco de dados
             return render_template("index.html", popup = "block")
+
+    
+    def inscricao_aluno_sessao(self, sessao):
+        if #####aluno inscrito em alguma sessao:
+            return render_template("agendamento.html", erro = "erroJAAGENDADO")
+        else:
+            ####increver aluno na secao
+            return render_template("agendamento_completo.html")
+
+    
+    def valida_senha_operador(self, identificador,senha):
+        if: ##########econtrou no banco de dados
+            return render_template("atendimento.html")
+        else:
+            return render_template("login_op.html", erro = "erroLOGIN")
+
