@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
- <link href="style.css" rel="stylesheet" type="text/css"/> 
+ <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"/> 
 
 </head>
 
@@ -15,7 +15,7 @@
       <h1 class="bandecoConnect">Bandeco Connect</h1>
     </div>
       <ul class="meuslinks">
-        <li><a href="index.html">INÍCIO</a></li>
+        <li><a href="/">INÍCIO</a></li>
         <li><a href="cardápio.html">CARDÁPIO</a></li>
         <li><a href="sobre.html">SOBRE NÓS</a></li>
       </ul>
@@ -23,7 +23,7 @@
 <div class="contents">
     <h1 class="principal">Faça seu cadastro:</h1>
    <div class="nossoform">
-    <form class="login"> 
+    <form class="login" action="/cadastro_aluno_post" method="POST"> 
       <label for="nome">Nome:</label>
       <input type="text" name="nome" id="nome" placeholder="Ex.: Claudio">
       <br><label for="sobrenome">Sobrenome:</label>
@@ -35,11 +35,11 @@
       <br><label for="email">email:</label>
       <input type="email" name="email" id="email" placeholder="Ex.: claudiofarias@nce.ufrj.br">
       <br><label for="phone">Telefone:</label>
-      <input type="tel" name="phone" id="phone" placeholder="Ex.: (00) 00000-0000">
+      <input type="tel" name="telefone" id="phone" placeholder="Ex.: (00) 00000-0000">
       <br> <label for="senha">Senha:</label>
-      <input id="senha" type="password" name="password" placeholder="********">
+      <input id="senha" type="password" name="senha" placeholder="********">
       <br><label for="resenha"> Confirme sua Senha:</label>
-      <input id="resenha" type="password" name="resenha" placeholder="********">
+      <input id="resenha" type="password" name="re_senha" placeholder="********">
       <br><button type="submit" class="cadastra-btn">Cadastrar</button>
     </form>
   </div>
