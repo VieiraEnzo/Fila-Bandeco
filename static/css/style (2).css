@@ -1,0 +1,189 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: rgba(14, 0, 0, 1);
+  color: white;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* vw= viewwidth & vh= viewport height */
+nav{
+  display: flex;
+  background-color: rgba(18, 18, 18, 1);
+  width: 100%;
+  position: fixed;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+
+}
+.bandecoConnect{
+  color: rgba(210, 86, 35, 1);
+  padding: 2vh;
+  font-family: Tahoma, sans-serif;
+  font-weight: bolder;
+
+}
+.logoru{
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+.logo{
+  border-radius: 2vh;
+  padding: 2vh;
+  padding-left: 4vh;
+  height: 10vh;
+  align-self: center;
+
+}
+.meuslinks{
+  display: inline;  
+  padding-right: 4vh;
+}
+nav ul li{
+  font-size: 2.5vh;
+  font-weight: bold;
+  display: inline-block;
+  list-style: none;
+  padding: 2vh;
+  border-radius: 1em;
+}
+nav ul li a{
+  display: block;
+  text-decoration: none;
+  color: #fafafa;
+
+}
+nav ul li a:hover {
+color: rgba(210, 86, 35, 1);
+}
+.contents{
+  padding-top: 15vh;
+  color: white;
+  display: flexbox;
+  padding-bottom: 50vh;
+}
+/*padding-top relativo ao tamanho da nav bar */
+.login, .agenda, .box{
+  padding: 4%;
+  border-radius: 2em;
+  background: rgba(217, 217, 217, 0.09);
+  margin-left: 25%;
+}
+form, .box {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 50%;
+  box-shadow: rgba(210, 86, 35, 0.4) 5px 5px, rgba(249, 105, 14, 0.3) 10px 10px, rgba(249, 105, 14, 0.2) 15px 15px, rgba(249, 105, 14, 0.1) 20px 20px, rgba(249, 105, 14, 0.05) 25px 25px;
+  
+} 
+.nossoform{
+  display: flex;
+}
+.all{
+  display: flexbox;
+}
+.agenda{
+  justify-self: center;
+}
+
+input{
+  background-color: transparent;
+  align-self: center;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  width: 100% ;
+  padding-top: 1em;
+  color: white;
+  
+}
+.post-btn, .cadastra-btn, .pesquisar, .entrar, .entrar-btn{
+  font-weight: bolder;
+  font-size: 100%;
+  color: white;
+  cursor: pointer;
+  border: transparent;
+  padding: 2%;
+  width: 30%;
+  border-radius: 5em;
+  background: rgba(210, 86, 35, 1);
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+}
+
+.semcad{
+  align-self: center;
+}
+.click{
+  color: rgba(210, 86, 35, 1);
+  font-size: 1em;
+  font-weight: bolder;
+  border: none; 
+  padding-top: 0;
+  cursor: pointer;
+}
+.principal{
+  margin-left: 14vh ;
+  font-size: 3vh;
+  font-weight: light;
+}
+
+#refeicao, #local{
+  height: 44px;
+  border: none;
+  overflow: hidden;
+  background: none;
+  display: flex-box;
+  justify-content: center;
+}
+#refeicao, #local :-moz-focus-inner {
+  border: 0;
+}
+#refeicao, #local :focus {
+  outline: none;
+}
+#refeicao, #local option{
+  width: 25%;
+  font-size: 1.2em;
+  padding: 10px 0;
+  text-align: center;
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+  border:none;
+  border-radius: 5px;
+  background-color: rgba(210, 86, 35, 1);
+  justify-self: center;
+
+}
+
+.objetivo{
+  font-size: 2.5vh;
+}
+.title{
+  margin: 0;
+  padding: 0;
+  font-size: 4vh;
+  justify-self: center;
+  align-self: center;
+  color: rgba(210, 86, 35, 1);
+
+}
+
+.caixinha{
+  padding: 4%;
+  border-radius: 2em;
+  background: rgba(217, 217, 217, 0.09);
+  margin-left: 25%;
+  width: 30%;
+}
+
+.campus{
+  width:40%;
+}
