@@ -5,7 +5,7 @@ c = conn.cursor()
 
 c.execute('''
         CREATE TABLE aluno (
-            id_aluno serial primary key,
+            id_aluno INTEGER AUTOINCREMENT primary key,
             nome varchar(200),
             cpf varchar(200),
             telefone varchar(200),

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
  
 
 </head>
@@ -14,13 +14,14 @@
   
   <nav class="navbar">
     <div class="logoru">
-      <img class="logo" src="ru.ufrj.logo.jpg" alt="logo do restaurante universitário">
+      <img class="logo" src="{{ url_for('static', filename='ru.ufrj.logo.jpg') }}" alt="logo do restaurante universitário">
       <h1 class="bandecoConnect">Bandeco Connect</h1>
     </div>
       <ul class="meuslinks">
-        <li><a href="index.html">INÍCIO</a></li>
-        <li><a href="cardapio.html">CARDÁPIO</a></li>
-        <li><a href="sobre.html">SOBRE NÓS</a></li>
+        <li><a href="/">INÍCIO</a></li>
+        <li><a href="/locais">LOCAIS</a></li>
+        <li><a href="/cardapio">CARDÁPIO</a></li>
+        <li><a href="/sobrel">SOBRE NÓS</a></li>
       </ul>
   </nav>
   
@@ -28,7 +29,7 @@
      <h1 class="principal">Realize o agendamento de sua refeição:</h1>
 
 <div class="nossoform">
-  <form class="agenda">
+  <form class="agenda" action = "/agendamento" method = "post">
     <label for="refeicao">Selecione a refeição:</label>
     <br><select name="refeicao" id="refeicao" multiple>
       <option value="almoço">almoço</option>
@@ -36,8 +37,8 @@
   </select>
     <br>
     <label for="local">Selecione o horário desejado:</label>
-    <br><select name="seçaoAlmoço" id="seçãoAlmoço" multiple>
-      <option value="10:30">10:30</option>
+    <br><select name="seçaoJantar" id="seçãoJantar" multiple>
+      <option value="10:30">17:30 - 18:00</option>
       <option value="11:00">11:00</option>
       <option value="11:30">11:30</option>
       <option value="12:00">12:00</option>

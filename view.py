@@ -1,34 +1,50 @@
-from flask import Flask, render_template, request, redirect, session
-from flask_session import Session
+from curses.ascii import NUL
+from flask import Flask, render_template, request
 from control import Control
+from model import Aluno
 
 app = Flask(__name__)
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
+a = Control()
 
 #Pagina inicial do projeto
 @app.route("/")
 def index():
-    return render_template("index.html", popup = "none")
+    return render_template("index.html")
 
-#Pagina inicial com o popup de login
+#Roda a pagina do cardapio
+@app.route("/cardapio")
+def cardapio():
+    return render_template("cardapio.html")
+
+#roda a pagina do sobre
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html")
+
+#Pagina Locais
+@app.route("/locais")
+def locais():
+    return render_template("locais.html")
+
+#Pagina inicial com o login
 @app.route("/login_aluno")
 def index_login_aluno():
-    return render_template("index.html", popup = "block")
+    return render_template("index.html")
 
 #Funcao para validar o Login de um Aluno
 @app.route("/login_aluno", methods = ["POST"])
-def index_login_aluno_post():
+def login_aluno():
+
+    
     identificador = request.form["identificador"]
     senha = request.form["senha"]
-    a = Control()
-    fetch = a.login_aluno(identificador,senha) 
+    fetch = a.login_aluno(identificador,senha)
+    print(fetch)
+    print(fetch[0][2])
     if(len(fetch) == 0):
         return render_template("index.html", erro = "erroLogin")
     else:
-        session["id"] = fetch
-        return render_template("index.html", erro = fetch)
+        return render_template("agendamento.html", erro = "cheguei aqui")
     
 
 #Site de Cadastro do aluno
@@ -49,14 +65,28 @@ def cadastro_aluno_post():
     dre = request.form["dre"]
     senha = request.form["senha"]
     re_senha = request.form["re_senha"]
-    a = Control()
     if senha == re_senha:         #compara se as senhas sao igual e retorna um erro se nao forem
         
         return a.registrar_aluno(nome, cpf, telefone, email, dre, senha)
     else:
-        return render_template("regis_aluno.html", erro = "erroSENHA")
+        return render_template("cadastro.html", erro = "erroSENHA")
 
 
+@app.route("/agendamento", methods = ["POST"])
+def agendamento():
+    
+    refeicao = request.form.get("refeicao")
+    local = request.form.get("local")
+    print(refeicao, local)
+    if refeicao == None or local == None:
+        return render_template("agendamento.html", erro = "erroSELECAO")
+    elif refeicao == 'jantar':
+        return render_template("agendamento.jantar.html")
+    else:
+        return render_template("agendamento.almoco.html")
+
+
+    
 
 app.run()
 

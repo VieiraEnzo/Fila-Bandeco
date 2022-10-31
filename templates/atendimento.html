@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+ <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css"/> 
+
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logoru">
+      <img class="logo" src="{{ url_for('static', filename='ru.ufrj.logo.jpg') }}" alt="logo do restaurante universitário">
+      <h1 class="bandecoConnect">Bandeco Connect</h1>
+    </div>
+      <ul class="meuslinks">
+        <li><a href="/">INÍCIO</a></li>
+        <li><a href="/cardapio">CARDÁPIO</a></li>
+        <li><a href="/sobre">SOBRE NÓS</a></li>
+      </ul>
+  </nav>
+<div class="contents">
+    <h1 class="principal">Alunos:</h1>
+   <div class="nossoform">
+    <form class="register"> 
+      
+      <br><label for="cpf">CPF:</label>
+      <input type="text" name="cpf" id="cpf" placeholder="Ex.: 000.000.000-00">
+      
+      <br><button type="submit" class="entrar-btn">registrar aluno</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

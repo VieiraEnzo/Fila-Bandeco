@@ -14,8 +14,7 @@ class AlunoDAO:
         return userId[0][0]
     
     def efetuarLogin(self, aluno):
-        fetch = c.execute("select rowid, * from aluno where cpf = '"+aluno.get_cpf()+"' and senha = '"+aluno.get_senha()+"' ").fetchall()
-        print(fetch)
+        fetch = c.execute("select * from aluno where cpf = ? and senha = ? ", (aluno.get_cpf(), aluno.get_senha())).fetchall()
         conn.commit()
 
         return fetch

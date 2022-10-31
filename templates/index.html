@@ -1,33 +1,10 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-    <head>
-        <title>Fila RU</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
-    </head>
-    <body>
-        <h1>Página principal</h1>
-        <form method="POST" action="/login_aluno" style='display: {{popup}}'/>
-            <label>cpf</label>
-            <input type="text" name="identificador"/>
-            <br>
-            <label>Senha</label>
-            <input type="text" name="senha"/>
-            <br>
-            <input type="submit">
-        </form>
-        <a href="/login_aluno">login</a>
-        <a href="/regis_aluno">regis</a>
-        <h1>{{erro}}</h1>
-    </body>
-</html>
-=======
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -35,20 +12,20 @@
 <div class="all">
   <nav class="navbar">
     <div class="logoru">
-      <img class="logo" src="ru.ufrj.logo.jpg" alt="logo do restaurante universitário">
+      <img class="logo" src="{{ url_for('static', filename='ru.ufrj.logo.jpg') }}" alt="logo do restaurante universitário">
       <h1 class="bandecoConnect">Bandeco Connect</h1>
     </div>
       <ul class="meuslinks">
         <li><a href="/">INÍCIO</a></li>
-        <li><a href="cardápio.html">CARDÁPIO</a></li>
-        <li><a href="sobre.html">SOBRE NÓS</a></li>
+        <li><a href="/cardapio">CARDÁPIO</a></li>
+        <li><a href="/sobre">SOBRE NÓS</a></li>
       </ul>
   </nav>
 
   <div class="contents">
      <h1 class="principal">Acesse nossa rede:</h1>
      <div class="nossoform">
-      <form class="login">
+      <form class="login" action = "/login_aluno" method="post">
         <label for="user">Usuário:</label>
         <input type="text" name="identificador" id="user" placeholder="CPF ou email">
         <br><label for="senha">Senha:</label>
@@ -62,11 +39,10 @@
   </div>
 </div>
 
-
+<span>{{erro}}</span>
 
   <script src="script.js"></script>
 
 </body>
 
 </html>
->>>>>>> 73ac905a34d228c816a60b6a49addfc218a91100

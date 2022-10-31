@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="all">
+  <nav class="navbar">
+    <div class="logoru">
+      <img class="logo" src="{{ url_for('static', filename='ru.ufrj.logo.jpg') }}" alt="logo do restaurante universitário">
+      <h1 class="bandecoConnect">Bandeco Connect</h1>
+    </div>
+      <ul class="meuslinks">
+        <li><a href="/">INÍCIO</a></li>
+        <li><a href="/cardapio">CARDÁPIO</a></li>
+        <li><a href="/sobre">SOBRE NÓS</a></li>
+      </ul>
+  </nav>
+
+  <div class="contents">
+     <h1 class="principal">Locais</h1>
+</div>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
