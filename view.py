@@ -32,14 +32,14 @@ def index_login_aluno_post():
     
 
 #Site de Cadastro do aluno
-@app.route("/regis_aluno")
-def regis_aluno():
-    return render_template("regis_aluno.html")
+@app.route("/cadastro")
+def cadastro_aluno():
+    return render_template("cadastro.html")
 
 #Cadastra o aluno dentro do banco de dados
 #adicionar outras exceções e usar try
-@app.route("/regis_aluno", methods = ["POST"])
-def regis_aluno_post():
+@app.route("/cadastro_aluno_post", methods = ["POST"])
+def cadastro_aluno_post():
     nome = request.form["nome"]
     sobrenome = request.form["sobrenome"]
     nome = nome + " " + sobrenome  #concatena o nome principal com o sobrenome

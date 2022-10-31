@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <html>
+<<<<<<< HEAD
     <head>
         <title>Fila RU</title>
         <meta charset="utf-8"/>
@@ -20,3 +22,51 @@
         <h1>{{erro}}</h1>
     </body>
 </html>
+=======
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="all">
+  <nav class="navbar">
+    <div class="logoru">
+      <img class="logo" src="ru.ufrj.logo.jpg" alt="logo do restaurante universitário">
+      <h1 class="bandecoConnect">Bandeco Connect</h1>
+    </div>
+      <ul class="meuslinks">
+        <li><a href="/">INÍCIO</a></li>
+        <li><a href="cardápio.html">CARDÁPIO</a></li>
+        <li><a href="sobre.html">SOBRE NÓS</a></li>
+      </ul>
+  </nav>
+
+  <div class="contents">
+     <h1 class="principal">Acesse nossa rede:</h1>
+     <div class="nossoform">
+      <form class="login">
+        <label for="user">Usuário:</label>
+        <input type="text" name="identificador" id="user" placeholder="CPF ou email">
+        <br><label for="senha">Senha:</label>
+        <input id="senha" type="password" name="senha" placeholder="********">
+        <br><button class="post-btn" type="submit">entrar</button>
+        <br><h2 class="semcad">ainda não possui cadastro?</h2>
+        <input type="button" class="click" id="click" value="clique aqui"
+ onclick="window.location.href='/cadastro';"/>   
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
+>>>>>>> 73ac905a34d228c816a60b6a49addfc218a91100

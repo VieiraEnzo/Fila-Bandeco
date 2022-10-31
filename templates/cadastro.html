@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+ <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"/> 
+
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logoru">
+      <img class="logo" src="ru.ufrj.logo.jpg" alt="logo do restaurante universitário">
+      <h1 class="bandecoConnect">Bandeco Connect</h1>
+    </div>
+      <ul class="meuslinks">
+        <li><a href="/">INÍCIO</a></li>
+        <li><a href="cardápio.html">CARDÁPIO</a></li>
+        <li><a href="sobre.html">SOBRE NÓS</a></li>
+      </ul>
+  </nav>
+<div class="contents">
+    <h1 class="principal">Faça seu cadastro:</h1>
+   <div class="nossoform">
+    <form class="login" action="/cadastro_aluno_post" method="POST"> 
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" id="nome" placeholder="Ex.: Claudio">
+      <br><label for="sobrenome">Sobrenome:</label>
+      <input type="text" name="sobrenome" id="sobrenome" placeholder="Ex.: Miceli de Farias">
+      <br><label for="cpf">CPF:</label>
+      <input type="text" name="cpf" id="cpf" placeholder="Ex.: 000.000.000-00">
+      <br><label for="dre">DRE:</label>
+      <input type="text" name="dre" id="dre" placeholder="Ex.: 104032204">
+      <br><label for="email">email:</label>
+      <input type="email" name="email" id="email" placeholder="Ex.: claudiofarias@nce.ufrj.br">
+      <br><label for="phone">Telefone:</label>
+      <input type="tel" name="telefone" id="phone" placeholder="Ex.: (00) 00000-0000">
+      <br> <label for="senha">Senha:</label>
+      <input id="senha" type="password" name="senha" placeholder="********">
+      <br><label for="resenha"> Confirme sua Senha:</label>
+      <input id="resenha" type="password" name="re_senha" placeholder="********">
+      <br><button type="submit" class="cadastra-btn">Cadastrar</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
