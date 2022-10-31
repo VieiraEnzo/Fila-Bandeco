@@ -48,7 +48,8 @@ class Control:
             return render_template("index.html", erro = "erroCadastro")
 
     
-    def agendar_aluno(self, aluno):
+    def agendar_aluno(self):
+        #self.aluno_logado
         pass
 
 

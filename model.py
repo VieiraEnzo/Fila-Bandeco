@@ -1,14 +1,14 @@
 class Aluno:
 
     def __init__(self):
-        self.__id_aluno = -1
-        self.__nome = ""
-        self.__cpf = ""
-        self.__telefone = ""
-        self.__email = ""
-        self.__senha = ""
-        self.__dre = ""
-        self.__dtPrimeiroCadastro = ""
+        self.__id_aluno = None
+        self.__nome = None
+        self.__cpf = None
+        self.__telefone = None
+        self.__email = None
+        self.__senha = None
+        self.__dre = None
+        self.__dtPrimeiroCadastro = None
 
     def set_id_aluno(self, var):
         self.__id_aluno = var

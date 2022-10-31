@@ -44,7 +44,7 @@ def login_aluno():
     if(len(fetch) == 0):
         return render_template("index.html", erro = "erroLogin")
     else:
-        return render_template("agendamento.html", erro = "cheguei aqui")
+        return render_template("agendamento.html")
     
 
 #Site de Cadastro do aluno
@@ -66,7 +66,6 @@ def cadastro_aluno_post():
     senha = request.form["senha"]
     re_senha = request.form["re_senha"]
     if senha == re_senha:         #compara se as senhas sao igual e retorna um erro se nao forem
-        
         return a.registrar_aluno(nome, cpf, telefone, email, dre, senha)
     else:
         return render_template("cadastro.html", erro = "erroSENHA")
@@ -89,4 +88,3 @@ def agendamento():
     
 
 app.run()
-
