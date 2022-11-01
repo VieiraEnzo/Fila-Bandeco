@@ -85,6 +85,13 @@ def agendamento():
         return render_template("agendamento.almoco.html")
 
 
-    
+@app.route("agendamento_refeicao")
+def agendamento_jantar():
+    horario = request.form.get("horario")
+    return a.agendar_aluno(horario)
+
+
+
+
 
 app.run()
