@@ -29,19 +29,13 @@
      <h1 class="principal">Realize o agendamento de sua refeição:</h1>
 
 <div class="nossoform">
-  <form class="agenda" action = "/agendamento_refeicao" method = "post">
-    <label for="refeicao">Selecione a refeição:</label>
-    <br><select name="refeicao" id="refeicao" multiple>
-      <option value="almoço">almoço</option>
-      <option value="jantar">jantar</option>      
-  </select>
-    <br>
-    <label for="local">Selecione o horário desejado:</label>
-    <br><select name="horario" id="seçãoJantar" multiple>
-      <option value="10:30">17:30 - 18:00</option>
-      <option value="11:00">11:00</option>
-      <option value="11:30">11:30</option>
-      <option value="12:00">12:00</option>
+  <form class="agenda" action = "/agendamento" method = "post">
+    <label for="seçaoJantar">Selecione o horário desejado:</label>
+    <br><select name="seçaoJantar" id="seçaoJantar" multiple>
+      <option value="17:30">17:30 - 18:00</option>
+      <option value="18:00">18:30 - 19:00</option>
+      <option value="19:00">19:00 - 19:30</option>
+      <option value="12:00">19:30 - 20:00</option>
 
     </select>
     <br><button type="submit" class="realizarAgendamento">Agendar</button>
