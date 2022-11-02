@@ -18,5 +18,16 @@ class AlunoDAO:
         conn.commit()
 
         return fetch
+
+class SessaoDAO:
+    def pegarTodos():
+        fetch = c.execute("select id_sessao, dtInicioSessao, dtFimSessao, statusSessao, cardapio, unidade from sessao inner join refeicao on sessao.fk_id_refeicao = refeicao.id_refeicao").fetchall()
+        conn.commit()
+
+        return fetch
+
+class AgendamentoDAO:
+    def inserir(self, agendamento):
+        
         
         

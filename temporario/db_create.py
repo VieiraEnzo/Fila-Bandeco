@@ -5,7 +5,7 @@ c = conn.cursor()
 
 c.execute('''
         CREATE TABLE aluno (
-            id_aluno INTEGER AUTOINCREMENT primary key,
+            id_aluno INTEGER AUTO_INCREMENT primary key,
             nome varchar(200),
             cpf varchar(200),
             telefone varchar(200),
@@ -18,25 +18,24 @@ c.execute('''
 
 c.execute('''
         CREATE TABLE operador (
-            id_operador serial primary key,
+            id_operador INTEGER AUTO_INCREMENT primary key,
             nome varchar(200),
             cpf varchar(200),
             telefone varchar(200),
             email varchar(200),
-            senhar varchar(200),
-            dtPrimeiroCadastro timestamp default current_timestamp not null,
-            unidade varchar(1)
+            senha varchar(200),
+            dtPrimeiroCadastro timestamp default current_timestamp not null
         );
           ''')
 
 c.execute('''
         CREATE TABLE administrador (
-            id_administrador serial primary key,
+            id_administrador INTEGER PRIMARY KEY AUTOINCREMENT,
             nome varchar(200),
             cpf varchar(200),
             telefone varchar(200),
             email varchar(200),
-            senhar varchar(200),
+            senha varchar(200),
             dtPrimeiroCadastro timestamp default current_timestamp not null,
             siape varchar(200) not null unique
         );
@@ -44,8 +43,9 @@ c.execute('''
 
 c.execute('''
         CREATE TABLE refeicao(
-            id_refeicao serial primary key,
+            id_refeicao INTEGER PRIMARY KEY AUTOINCREMENT,
             cardapio varchar(200),
+            unidade varchar(200),
             statusRefeicao varchar(200),
             dtInicioRefeicao datetime,
             dtFimRefeicao datetime,
@@ -57,7 +57,7 @@ c.execute('''
 
 c.execute('''
         CREATE TABLE sessao(
-            id_sessao serial primary key,
+            id_sessao INTEGER PRIMARY KEY AUTOINCREMENT,
             dtCadastroSessao timestamp default current_timestamp not null,
             statusSessao varchar(200),
             dtInicioSessao datetime,
@@ -69,7 +69,7 @@ c.execute('''
 
 c.execute('''
         CREATE TABLE atendimento(
-            id_atendimento serial primary key,
+            id_atendimento INTEGER AUTO_INCREMENT primary key,
             dtAtendimento timestamp default current_timestamp not null,
             tipoAtendimento varchar(200),
             fk_id_aluno bigint unsigned not null,
@@ -83,7 +83,7 @@ c.execute('''
 
 c.execute('''
         CREATE TABLE agendamento(
-            id_agendamento serial primary key,
+            id_agendamento INTEGER AUTO_INCREMENT primary key,
             dtAgendamento timestamp default current_timestamp not null,
             dtAgendada datetime,
             statusAgendamento varchar(200),

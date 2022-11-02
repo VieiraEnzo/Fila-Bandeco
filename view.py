@@ -1,10 +1,12 @@
 from curses.ascii import NUL
-from flask import Flask, render_template, request
-from control import Control
-from model import Aluno
+from flask import Flask, render_template, request, session, redirect
+from flask_session import Session
+import control
 
 app = Flask(__name__)
-a = Control()
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 #Pagina inicial do projeto
 @app.route("/")
@@ -26,27 +28,6 @@ def sobre():
 def locais():
     return render_template("locais.html")
 
-#Pagina inicial com o login
-@app.route("/login_aluno")
-def index_login_aluno():
-    return render_template("index.html")
-
-#Funcao para validar o Login de um Aluno
-@app.route("/login_aluno", methods = ["POST"])
-def login_aluno():
-
-    
-    identificador = request.form["identificador"]
-    senha = request.form["senha"]
-    fetch = a.login_aluno(identificador,senha)
-    print(fetch)
-    print(fetch[0][2])
-    if(len(fetch) == 0):
-        return render_template("index.html", erro = "erroLogin")
-    else:
-        return render_template("agendamento.html")
-    
-
 #Site de Cadastro do aluno
 @app.route("/cadastro")
 def cadastro_aluno():
@@ -65,26 +46,38 @@ def cadastro_aluno_post():
     dre = request.form["dre"]
     senha = request.form["senha"]
     re_senha = request.form["re_senha"]
+    controle = control.alunoControle()
     if senha == re_senha:         #compara se as senhas sao igual e retorna um erro se nao forem
-        return a.registrar_aluno(nome, cpf, telefone, email, dre, senha)
+        return controle.registrar_aluno(nome, cpf, telefone, email, dre, senha)
     else:
         return render_template("cadastro.html", erro = "erroSENHA")
-
-
-@app.route("/agendamento", methods = ["POST"])
-def agendamento():
     
-    refeicao = request.form.get("refeicao")
-    local = request.form.get("local")
-    print(refeicao, local)
-    if refeicao == None or local == None:
-        return render_template("agendamento.html", erro = "erroSELECAO")
-    elif refeicao == 'jantar':
-        return render_template("agendamento.jantar.html")
+#Pagina inicial com o login
+@app.route("/login_aluno")
+def index_login_aluno():
+    return render_template("index.html")
+
+#Funcao para validar o Login de um Aluno
+@app.route("/login_aluno", methods = ["POST"])
+def login_aluno():
+
+    identificador = request.form["identificador"]
+    senha = request.form["senha"]
+    controle = control.alunoControle()
+    fetch = controle.login_aluno(identificador,senha)
+    if fetch == None:
+        return render_template("index.html", erro = "erroLogin")
     else:
-        return render_template("agendamento.almoco.html")
+        session["alunoLogado"] = fetch
+        sessao = control.sessaoControle.pegarTodos()
+        return render_template("agendamento.html", sessaos = sessao)
 
-
+@app.route("/regis_agendamento")
+def cadastro_agendamento():
     
 
+@app.route("/logout")
+def logout():
+    session["alunoLogado"] = None
+    return redirect("/")
 app.run()

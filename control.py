@@ -1,13 +1,12 @@
 from ctypes import sizeof
 from flask import render_template
-from model import Aluno
-from dao import AlunoDAO
+import model
+import dao
 
-class Control:
+class alunoControle:
     def __init__(self):
-        self.aluno = Aluno()
-        self.aluno_logado = Aluno()
-        self.alunoDAO = AlunoDAO()
+        self.aluno = model.Aluno()
+        self.alunoDAO = dao.AlunoDAO()
 
     #Checa se o login do aluno é valido
     def login_aluno(self, identificador, senha):
@@ -16,18 +15,18 @@ class Control:
 
         fetch = self.alunoDAO.efetuarLogin(self.aluno)
 
-        if len(fetch) == 0:
-            pass
+        if not fetch:
+            return None
         else:
-            self.aluno_logado.set_id_aluno(fetch[0][0])
-            self.aluno_logado.set_nome(fetch[0][1])
-            self.aluno_logado.set_cpf(fetch[0][2])
-            self.aluno_logado.set_telefone(fetch[0][3])
-            self.aluno_logado.set_email(fetch[0][4])
-            self.aluno_logado.set_senha(fetch[0][5])
+            self.aluno.set_id_aluno(fetch[0][0])
+            self.aluno.set_nome(fetch[0][1])
+            self.aluno.set_cpf(fetch[0][2])
+            self.aluno.set_telefone(fetch[0][3])
+            self.aluno.set_email(fetch[0][4])
+            self.aluno.set_senha(fetch[0][5])
             #fetch[0][6] é a data me que o aluno cadastro
-            self.aluno_logado.set_dre(fetch[0][7])
-        return fetch
+            self.aluno.set_dre(fetch[0][7])
+        return self.aluno
         
 
     #Registra o aluno dentro do Banco de Dados
@@ -49,7 +48,17 @@ class Control:
 
     
     def agendar_aluno(self):
-        #self.aluno_logado
         pass
+
+class sessaoControle:
+    def __init__(self):
+        self.sessao = model.Sessao()
+        self.sessaoDAO = dao.SessaoDAO()
+
+    @staticmethod
+    def pegarTodos():
+        fetch = dao.SessaoDAO.pegarTodos()
+        return fetch
+
 
 

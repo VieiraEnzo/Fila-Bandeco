@@ -6,49 +6,81 @@
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
- 
+
 
 </head>
-<div class="all">
-  
-  <nav class="navbar">
-    <div class="logoru">
-      <img class="logo" src="{{ url_for('static', filename='ru.ufrj.logo.jpg') }}" alt="logo do restaurante universitário">
-      <h1 class="bandecoConnect">Bandeco Connect</h1>
-    </div>
-      <ul class="meuslinks">
-        <li><a href="/">INÍCIO</a></li>
-        <li><a href="/locais">LOCAIS</a></li>
-        <li><a href="/cardapio">CARDÁPIO</a></li>
-        <li><a href="/sobre">SOBRE NÓS</a></li>
-      </ul>
-  </nav>
-  
-  <div class="contents">
-     <h1 class="principal">Realize o agendamento de sua refeição:</h1>
-
-<div class="nossoform">
-  <form class="agenda" action = "/agendamento" method = "post">
-    <label for="refeicao">Selecione a refeição:</label>
-    <br><select name="refeicao" id="refeicao" multiple>
-      <option value="almoco">almoço</option>
-      <option value="jantar">jantar</option>      
-  </select>
-    <br>
-    <label for="local">Selecione o RU desejado:</label>
-    <br><select name="local" id="local" multiple>
-      <option value="BandejãoCentral">RU Central</option>
-      <option value="BandejãoLetras">RU de Letras</option>
-      <option value="BandejãoCT">RU do CT</option>
-    </select>
-    <br><button type="submit" class="pesquisar">ver horários disponíveis</button>
+<body>
+  <div class="all">
     
-  </form>
-    <h2 class="confirmação"></h2>
+    <nav class="navbar">
+      <div class="logoru">
+        <img class="logo" src="{{ url_for('static', filename='ru.ufrj.logo.jpg') }}" alt="logo do restaurante universitário">
+        <h1 class="bandecoConnect">Bandeco Connect</h1>
+      </div>
+        <ul class="meuslinks">
+          <li><a href="/">INÍCIO</a></li>
+          <li><a href="/locais">LOCAIS</a></li>
+          <li><a href="/cardapio">CARDÁPIO</a></li>
+          <li><a href="/sobre">SOBRE NÓS</a></li>
+          <li><a href="/logout">SAIR</a></li>
+        </ul>
+    </nav>
+    
+    <div class="contents">
+      <h1 class="principal">
+        Welcome {{session["alunoLogado"].get_nome()}}
+      </h1>
+      <h2 class="principal">Realize o agendamento de sua refeição:</h2>
 
-</div>
+  <div class="nossoform">
+    <form class="agenda" action = "/agendamento" method = "post">
+      <label for="refeicao">Selecione a refeição:</label>
+      <br>
+      <select name="refeicao" id="refeicao">
+        <option value="1">Almoço</option>
+        <option value="2">Jantar</option>      
+      </select>
+      <br>
+      <label for="local">Selecione o RU desejado:</label>
+      <br>
+      <select name="local" id="local" multiple>
+        <option value="Central">RU Central</option>
+        <option value="Letras">RU de Letras</option>
+        <option value="CT">RU do CT</option>
+      </select>
+      <br>
+      <button type="submit" class="pesquisar">ver horários disponíveis</button>
+    </form>
+      <h2 class="confirmação"></h2>
+  </div>
+  <div class="nossoform">
+    <table>
+      <thead>
+        <th>DtInicio</th>
+        <th>DtFim</th> 
+        <th>StatusSessao</th> 
+        <th>Unidade</th>
+        <th>Cardapio</th>
+        <th></th>
+      </thead>
+      <tbody>
+        {% for sessao in sessaos %}
+        <tr>
+          <td>{{sessao[1]}}</td>
+          <td>{{sessao[2]}}</td>
+          <td>{{sessao[3]}}</td>
+          <td>{{sessao[5]}}</td>
+          <td>{{sessao[4]}}</td>
+          <td>
+            <a href="regis_agendamento?id={{sessao[0]}}">Agendar</a>
+          </td>
+        </tr>
+        {% endfor%}
+      </tbody>
+    </table>
+  </div><!--nossoform-->
 
-
-
-</div>
+  </div>
+  {{sessaos}}
+</body>
 </html>
