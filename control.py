@@ -59,6 +59,7 @@ class sessaoControle:
     @staticmethod
     def pegarTodos():
         fetch = dao.SessaoDAO.pegarTodos()
+        print(fetch)
         return fetch
     
     @staticmethod
@@ -82,6 +83,15 @@ class agendamentoControle:
         else:
             #adicionar exceção, pois como else não funciona
             return False
+    
+    @staticmethod
+    def pegarValidaPorId(id_aluno):
+        return dao.AgendamentoDAO.pegarValidaPorId(id_aluno)
+    
+    @staticmethod
+    def invalidaStatus(id_aluno, id_sessao):
+        return dao.AgendamentoDAO.invalidaStatus(id_aluno, id_sessao)
+
 
 class operadorControle:
     def __init__(self):
@@ -115,8 +125,7 @@ class atendimentoControle():
     def validaAgendamento():
         pass
 
-    
-    def registrar_atendimento_online(self, tipoAtendimento, fk_id_aluno, fk_id_sessao, id_operador):
+    def registrar_atendimento(self, tipoAtendimento, fk_id_aluno, fk_id_sessao, id_operador):
         self.atendimento.set_tipoAtendimento(tipoAtendimento)
         self.atendimento.set_fk_id_aluno(fk_id_aluno)
         self.atendimento.set_fk_id_sessao(fk_id_sessao)
@@ -124,11 +133,13 @@ class atendimentoControle():
         userId = self.atendimentoDAO.inserir(self.atendimento)
         if(userId > 0):
             self.atendimento.set_id_atendimento = userId
+            if(tipoAtendimento == '1'):
+                dao.AgendamentoDAO.invalidaStatus(fk_id_aluno, fk_id_sessao)
             return True
         else:
             #adicionar exceção, pois como else não funciona
             return False
-    
-    def realizaAtendimento(self, cpf, tipoAtendimento, id_operador):
-        pass
+    @staticmethod
+    def pegarPorOperador(id_operador):
+        return dao.AtendimentoDAO.pegarPorOperador(id_operador)
 

@@ -113,7 +113,8 @@ def atendimento():
     if session["operadorLogado"] == None:
         return redirect(url_for('index'))
     else:
-        return render_template("atendimento.html")
+        atendimento = control.atendimentoControle.pegarPorOperador(session["operadorLogado"].get_id_operador()) 
+        return render_template("atendimento.html", atendimentos = atendimento)
 
 @app.post("/regis_atendimento")
 def cadastro_atendimento():
@@ -121,13 +122,16 @@ def cadastro_atendimento():
     tipoAtendimento = request.form["tipo"]
     cpf = request.form["cpf"]
     id_operador = session["operadorLogado"].get_id_operador()
+    controle = control.atendimentoControle()
     if(tipoAtendimento == '2'):
-        controle = control.atendimentoControle()
-        fk_id_sessao = control.sessaoControle.pegaPorUnidade(session["operadorLogado"].get_unidade())
         fk_id_aluno = control.alunoControle.pegarPorCpf(cpf)
-        fetch = controle.registrar_atendimento_online(tipoAtendimento, fk_id_aluno, fk_id_sessao, id_operador) 
+        fk_id_sessao = control.sessaoControle.pegaPorUnidade(session["operadorLogado"].get_unidade())
     else:
-        
+        fk_id_aluno = control.alunoControle.pegarPorCpf(cpf)
+        fk_id_sessao = control.agendamentoControle.pegarValidaPorId(fk_id_aluno)
+
+    
+    fetch = controle.registrar_atendimento(tipoAtendimento, fk_id_aluno, fk_id_sessao, id_operador) 
 
     if(fetch == True):
         return redirect(url_for('atendimento'))

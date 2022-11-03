@@ -18,14 +18,30 @@
         <li><a href="/locais">LOCAIS</a></li>
         <li><a href="/cardapio">CARDÁPIO</a></li>
         <li><a href="/sobre">SOBRE NÓS</a></li>
+        <li><a href="/logout">SAIR</a></li>
       </ul>
   </nav>
 <h1>Welcome {{session["operadorLogado"].get_unidade()}}{{erro}}</h1>
 <div class="contents">
-    <h1 class="principal">Registrar alunos:</h1>
-    <div class="registros">
-      <p>O aluno XXX de cpf *** foi registrado</p>
-    </div>
+    <h1 class="principal">Alunos registrados:</h1>
+    <div class="nossoform">
+      <table>
+        <thead>
+          <th>Nome</th>
+          <th>Data de atendimento</th> 
+          <th>Tipo</th> 
+        </thead>
+        <tbody>
+          {% for atendimento in atendimentos %}
+          <tr>
+            <td>{{atendimento[0]}}</td>
+            <td>{{atendimento[1]}}</td>
+            <td>{{atendimento[2]}}</td>
+          </tr>
+          {% endfor%}
+        </tbody>
+      </table>
+    </div><!--nossoform-->
 <!--   adicionar variavel para o paragrafo de confirmação, de acordo com o input do form de cpf abaixo, da forma que acharem mais agradável esteticamente-->
   <br>
    <div class="nossoform">
