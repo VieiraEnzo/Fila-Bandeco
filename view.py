@@ -61,9 +61,23 @@ def agendamento():
     if session["alunoLogado"] == None:
         return redirect(url_for('index'))
     else:
+<<<<<<< HEAD
         sessao = control.sessaoControle.pegarTodos()
         return render_template("agendamento.html", sessaos = sessao)
     
+=======
+        return render_template("agendamento.almoco.html")
+
+
+@app.route("agendamento_refeicao")
+def agendamento_jantar():
+    horario = request.form.get("horario")
+    return a.agendar_aluno(horario)
+
+
+
+
+>>>>>>> 3d54eb67b8701d81133a8d2e06413295fd74a531
 
 #Funcao para validar o Login de um Aluno
 @app.route("/login_aluno", methods = ["POST"])
