@@ -28,7 +28,7 @@
     
     <div class="contents">
       <h1 class="principal">
-        Welcome {{session["alunoLogado"].get_nome()}}
+        Welcome {{session["alunoLogado"].get_id_aluno()}}{{erro}}
       </h1>
       <h2 class="principal">Realize o agendamento de sua refeição:</h2>
 
@@ -72,7 +72,7 @@
           <td>{{sessao[5]}}</td>
           <td>{{sessao[4]}}</td>
           <td>
-            <a href="regis_agendamento?id={{sessao[0]}}">Agendar</a>
+            <a href="regis_agendamento?key={{sessao[0]}}">Agendar</a>
           </td>
         </tr>
         {% endfor%}

@@ -6,8 +6,8 @@ html, body {
   color: white;
   font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-
 /* vw= viewwidth & vh= viewport height */
+/* usando medidas relativas pra se adaptarem a qualquer dispositivo */
 nav{
   display: flex;
   background-color: rgba(18, 18, 18, 1);
@@ -30,7 +30,6 @@ nav{
   flex-direction: row;
   padding: 0;
 }
-
 .logo{
   border-radius: 2vh;
   padding: 2vh;
@@ -73,14 +72,24 @@ color: rgba(210, 86, 35, 1);
   background: rgba(217, 217, 217, 0.09);
   margin-left: 25%;
 }
-form, .box {
+form, .box, .caixinha {
   display: flex;
   flex-direction: column;
   align-items: left;
   width: 50%;
   box-shadow: rgba(210, 86, 35, 0.4) 5px 5px, rgba(249, 105, 14, 0.3) 10px 10px, rgba(249, 105, 14, 0.2) 15px 15px, rgba(249, 105, 14, 0.1) 20px 20px, rgba(249, 105, 14, 0.05) 25px 25px;
   
-} 
+}
+.register{
+  box-shadow: none;
+  display:flex;
+  align-items: center;
+  width:25%;
+  background: rgba(217, 217, 217, 0.09);
+  padding: 4%;
+  border-radius: 2em;
+  margin-left: 60%;
+}
 .nossoform{
   display: flex;
 }
@@ -90,7 +99,6 @@ form, .box {
 .agenda{
   justify-self: center;
 }
-
 input{
   background-color: transparent;
   align-self: center;
@@ -102,7 +110,7 @@ input{
   color: white;
   
 }
-.post-btn, .cadastra-btn, .pesquisar, .entrar, .entrar-btn{
+.post-btn, .cadastra-btn, .pesquisar, .entrar, .entrar-btn, .realizarAgendamento{
   font-weight: bolder;
   font-size: 100%;
   color: white;
@@ -116,7 +124,6 @@ input{
   justify-self: center;
   align-self: center;
 }
-
 .semcad{
   align-self: center;
 }
@@ -134,7 +141,7 @@ input{
   font-weight: light;
 }
 
-#refeicao, #local{
+#local{
   height: 44px;
   border: none;
   overflow: hidden;
@@ -142,13 +149,71 @@ input{
   display: flex-box;
   justify-content: center;
 }
-#refeicao, #local :-moz-focus-inner {
+#refeicao{
+  height: 44px;
+  border: none;
+  overflow: hidden;
+  background: none;
+  display: flex-box;
+  justify-content: center;
+}
+#seçaoAlmoço{
+  height: 44px;
+  border: none;
+  overflow: hidden;
+  background: none;
+  display: flex-box;
+  justify-content: center;
+}
+#seçaoJantar{
+  height: 44px;
+  border: none;
+  overflow: hidden;
+  background: none;
+  display: flex-box;
+  justify-content: center;
+}
+
+#local: :-moz-focus-inner {
   border: 0;
 }
-#refeicao, #local :focus {
+#refeicao: :-moz-focus-inner {
+  border: 0;
+}
+#seçaoAlmoço: :-moz-focus-inner {
+  border: 0;
+}
+#seçaoJantar: :-moz-focus-inner {
+  border: 0;
+}
+
+#refeicao :focus {
   outline: none;
 }
-#refeicao, #local option{
+#local :focus {
+  outline: none;
+}
+#seçaoAlmoço :focus {
+  outline: none;
+}
+#seçaoJantar :focus {
+  outline: none;
+}
+
+#local option{
+  width: 25%;
+  font-size: 1.2em;
+  padding: 10px 0;
+  text-align: center;
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+  border:none;
+  border-radius: 5px;
+  background-color: rgba(210, 86, 35, 1);
+
+}
+#refeicao option{
   width: 25%;
   font-size: 1.2em;
   padding: 10px 0;
@@ -160,7 +225,32 @@ input{
   border-radius: 5px;
   background-color: rgba(210, 86, 35, 1);
   justify-self: center;
-
+}
+#seçaoAlmoço option{
+  width: 25%;
+  font-size: 1.2em;
+  padding: 10px 0;
+  text-align: center;
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(210, 86, 35, 1);
+  
+}
+#seçaoJantar option{
+  width: 25%;
+  font-size: 1.2em;
+  padding: 10px 0;
+  text-align: center;
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(210, 86, 35, 1);
+  
 }
 
 .objetivo{
@@ -175,15 +265,38 @@ input{
   color: rgba(210, 86, 35, 1);
 
 }
-
 .caixinha{
-  padding: 4%;
+  padding: 2%;
+  margin: 2%;
+  border-radius: 2em;
+  background: rgba(217, 217, 217, 0.09);
+  width: 30%;
+}
+.cardapios{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.mapinha{
+  padding: 2%;
   border-radius: 2em;
   background: rgba(217, 217, 217, 0.09);
   margin-left: 25%;
-  width: 30%;
-}
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  
+}
 .campus{
-  width:40%;
+  margin-left: 16%;
+  font-size: 3vh;
+  color: white;
+
+}
+.registros{
+  margin-left: 20%;
+  height: 30%;
 }

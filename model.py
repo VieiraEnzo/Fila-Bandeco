@@ -55,13 +55,13 @@ class Aluno:
     
 class Atendimento:
 
-    def __init__(self, id_atendimento, dtAtendimento, tipoAtendimento, fk_id_aluno, fk_id_operator, fk_id_sessao):
-        self.__id_atendimento = id_atendimento
-        self.__dtAtendimento = dtAtendimento
-        self.__tipoAtendimento = tipoAtendimento
-        self.__fk_id_aluno = fk_id_aluno
-        self.__fk_id_operator = fk_id_operator
-        self.__fk_id_sessao = fk_id_sessao
+    def __init__(self):
+        self.__id_atendimento = None
+        self.__dtAtendimento = None
+        self.__tipoAtendimento = None
+        self.__fk_id_aluno = None
+        self.__fk_id_operador = None
+        self.__fk_id_sessao = None
 
     def set_id_atendimento(self, var):
         self.__id_atendimento = var
@@ -81,11 +81,11 @@ class Atendimento:
     def get_fk_id_aluno(self):
         return self.__fk_id_aluno
 
-    def set_fk_id_operator(self, var):
-        self.__fk_id_operator = var
+    def set_fk_id_operador(self, var):
+        self.__fk_id_operador = var
 
-    def get_fk_id_operator(self):
-        return self.__fk_id_operator
+    def get_fk_id_operador(self):
+        return self.__fk_id_operador
     
     def set_fk_id_sessao(self, var):
         self.__fk_id_sessao = var
@@ -93,17 +93,17 @@ class Atendimento:
     def get_fk_id_sessao(self):
         return self.__fk_id_sessao
 
-class Operador:
 
-    def __init__(self, id_operador, nome, cpf, telefone, email, senha, dtPrimeiroCadastro, unidade):
-        self.__id_operador = id_operador
-        self.__nome = nome
-        self.__cpf = cpf
-        self.__telefone = telefone
-        self.__email = email
-        self.__senha = senha
-        self.__dtPrimeiroCadastro = dtPrimeiroCadastro
-        self.__unidade = unidade
+class Operador:
+    def __init__(self):
+        self.__id_operador = None
+        self.__nome = None
+        self.__cpf = None
+        self.__telefone = None
+        self.__email = None
+        self.__senha = None
+        self.__dtPrimeiroCadastro = None
+        self.__unidade = None
 
     def set_id_operador(self, var):
         self.__id_operador = var
@@ -146,17 +146,19 @@ class Operador:
 
     def get_unidade(self):
         return self.__unidade
+
+
 class Administrador:
 
-    def __init__(self, id_administrador, nome, cpf, telefone, email, senha, dtPrimeiroCadastro, siape):
-        self.__id_administrador = id_administrador
-        self.__nome = nome
-        self.__cpf = cpf
-        self.__telefone = telefone
-        self.__email = email
-        self.__senha = senha
-        self.__dtPrimeiroCadastro = dtPrimeiroCadastro
-        self.__siape = siape
+    def __init__(self):
+        self.__id_administrador = None
+        self.__nome = None
+        self.__cpf = None
+        self.__telefone = None
+        self.__email = None
+        self.__senha = None
+        self.__dtPrimeiroCadastro = None
+        self.__siape = None
 
     def set_id_administrador(self, var):
         self.__id_administrador = var
@@ -203,13 +205,13 @@ class Administrador:
 
 class Agendamento:
 
-    def __init__(self, id_agendamento, dtAgendamento, dtAgendada, statusAgendamento, fk_id_aluno, fk_id_sessao):
-        self.__id_agendamento = id_agendamento
-        self.__dtAgendamento = dtAgendamento
-        self.__dtAgendada = dtAgendada
-        self.__statusAgendamento = statusAgendamento
-        self.__fk_id_aluno = fk_id_aluno
-        self.__fk_id_sessao = fk_id_sessao
+    def __init__(self):
+        self.__id_agendamento = None
+        self.__dtAgendamento = None
+        self.__dtAgendada = None
+        self.__statusAgendamento = None
+        self.__fk_id_aluno = None
+        self.__fk_id_sessao = None
 
     def set_id_agendamento(self, var):
         self.__id_agendamento = var
@@ -235,16 +237,16 @@ class Agendamento:
     def get_fk_id_sessao(self):
         return self.__fk_id_sessao
 
-    
+
 class Sessao:
 
-    def __init__ (self, id_sessao, dtCadastroSessao, statusSessao, dtInicioSessao, dtFimSessao, fk_id_refeicao):
-        self.__id_sessao = id_sessao
-        self.__dtCadastroSessao = dtCadastroSessao
-        self.__statusSessao = statusSessao
-        self.__dtInicioSessao = dtInicioSessao
-        self.__dtFimSessao = dtFimSessao
-        self.__fk_id_refeicao = fk_id_refeicao
+    def __init__ (self):
+        self.__id_sessao = None
+        self.__dtCadastroSessao = None
+        self.__statusSessao = None
+        self.__dtInicioSessao = None
+        self.__dtFimSessao = None
+        self.__fk_id_refeicao = None
 
     def set_id_sessao(self, var):
         self.__id__sessao = var
@@ -267,14 +269,14 @@ class Sessao:
 
 class Refeicao:
 
-    def __init__(self,  id_refeicao, cardapio, statusRefeicao, dtInicoRefeicao, dtFimRefeicao, dtCadastroRefeicao, fk_id_administrador):
-        self.__id_refeicao = id_refeicao
-        self.__cardapio = cardapio
-        self.__statusRefeicao = statusRefeicao
-        self.__dtInicioRefeicao = dtInicoRefeicao
-        self.__dtFimRefeicao =dtFimRefeicao
-        self.__dtCadastroRefeicao = dtCadastroRefeicao
-        self.__fk_id_administrador = fk_id_administrador
+    def __init__(self):
+        self.__id_refeicao = None
+        self.__cardapio = None
+        self.__statusRefeicao = None
+        self.__dtInicioRefeicao = None
+        self.__dtFimRefeicao = None
+        self.__dtCadastroRefeicao = None
+        self.__fk_id_administrador = None
 
     def set_id_refeicao(self, var):
         self.__id__refeicao = var

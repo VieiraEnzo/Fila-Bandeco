@@ -18,12 +18,13 @@ c.execute('''
 
 c.execute('''
         CREATE TABLE operador (
-            id_operador INTEGER AUTO_INCREMENT primary key,
+            id_operador INTEGER PRIMARY KEY AUTOINCREMENT,
             nome varchar(200),
             cpf varchar(200),
             telefone varchar(200),
             email varchar(200),
             senha varchar(200),
+            unidade varchar(200),
             dtPrimeiroCadastro timestamp default current_timestamp not null
         );
           ''')
@@ -83,9 +84,8 @@ c.execute('''
 
 c.execute('''
         CREATE TABLE agendamento(
-            id_agendamento INTEGER AUTO_INCREMENT primary key,
+            id_agendamento INTEGER PRIMARY KEY AUTOINCREMENT,
             dtAgendamento timestamp default current_timestamp not null,
-            dtAgendada datetime,
             statusAgendamento varchar(200),
             fk_id_aluno bigint unsigned not null,
             fk_id_sessao bigint unsigned not null,

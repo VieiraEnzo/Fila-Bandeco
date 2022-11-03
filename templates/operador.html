@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
-
+    <title>TELA DO OPERADOR</title>
 </head>
 
 <body>
@@ -20,22 +20,19 @@
         <li><a href="/locais">LOCAIS</a></li>
         <li><a href="/cardapio">CARDÁPIO</a></li>
         <li><a href="/sobre">SOBRE NÓS</a></li>
-        <li><a href="/operador">OPERADOR</a></li>
+        <li><a href="/">ALUNO</a></li>
       </ul>
   </nav>
 
   <div class="contents">
      <h1 class="principal">Acesse nossa rede:</h1>
      <div class="nossoform">
-      <form class="login" action = "/login_aluno" method="post">
+      <form class="login" action = "/login_operador" method="post">
         <label for="user">Usuário:</label>
         <input type="text" name="identificador" id="user" placeholder="CPF ou email">
         <br><label for="senha">Senha:</label>
         <input id="senha" type="password" name="senha" placeholder="********">
-        <br><button class="post-btn" type="submit">entrar</button>
-        <br><h2 class="semcad">ainda não possui cadastro?</h2>
-        <input type="button" class="click" id="click" value="clique aqui"
- onclick="window.location.href='/cadastro';"/>   
+        <br><button class="post-btn" type="submit">entrar</button> 
       </form>
     </div>
   </div>

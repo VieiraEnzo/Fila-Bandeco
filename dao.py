@@ -28,6 +28,37 @@ class SessaoDAO:
 
 class AgendamentoDAO:
     def inserir(self, agendamento):
-        
-        
-        
+        c.execute("insert into agendamento (statusAgendamento, fk_id_aluno, fk_id_sessao) values (?, ?, ?)", (agendamento.get_statusAgendamento(), agendamento.get_fk_id_aluno(), agendamento.get_fk_id_sessao()))
+
+        userId = c.execute("select last_insert_rowid()").fetchall()
+
+        conn.commit()
+
+        return userId[0][0]
+
+    @staticmethod
+    def pegarPorCpf(cpf):
+        fetch = c.execute("select id_agendamento, id_aluno, id_sessao from agendamento inner join sessao on agendamento.fk_id_sessao = sessao.id_sessao inner join aluno on agendamento.fk_id_aluno = aluno.id_aluno where cpf = ? and statusSessao = 'Válida'", (cpf)).fetchall()
+        conn.commit()
+
+        return fetch
+
+class OperadorDAO:
+    def efetuarLogin(self, operador):
+        fetch = c.execute("select * from operador where cpf = ? and senha = ? ", (operador.get_cpf(), operador.get_senha())).fetchall()
+        conn.commit()
+
+        return fetch
+
+class AtendimentoDAO:
+    def validaAgendamento(self, operador):
+        pass
+    
+    def inserir(self, atendimento):
+        c.execute("insert into atendimento (tipoAtendimento, fk_id_aluno, fk_id_operador, fk_id_sessao) values (?, ?, ?, ?)", (atendimento.get_tipoAtendimento(), atendimento.get_fk_id_aluno(), atendimento.get_fk_id_operador(), atendimento.get_fk_id_sessao()))
+
+        userId = c.execute("select last_insert_rowid()").fetchall()
+
+        conn.commit()
+
+        return userId[0][0]
