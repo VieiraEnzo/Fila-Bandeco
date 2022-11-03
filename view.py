@@ -2,7 +2,7 @@ from curses.ascii import NUL
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_session import Session
 import control
-#from scrapper import Scrapper 
+from scrapper import Scrapper 
 
 
 app = Flask(__name__)
@@ -18,7 +18,7 @@ def index():
 #Roda a pagina do cardapio
 @app.route("/cardapio")
 def cardapio():
-    #comidinhas = Scrapper.scrap
+    comidinhas = Scrapper.scrap
     return render_template("cardapio.html", comidinhas = comidinhas)
 
 #roda a pagina do sobre
