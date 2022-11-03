@@ -5,7 +5,7 @@ import requests
 class Scrapper:
 
     @staticmethod
-    def scrap(self):
+    def scrap():
 
         url = "https://ru.ufrj.br/index.php/2014-07-24-00-55-59"
         html = requests.get(url)

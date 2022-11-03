@@ -18,7 +18,7 @@ def index():
 #Roda a pagina do cardapio
 @app.route("/cardapio")
 def cardapio():
-    comidinhas = Scrapper.scrap
+    comidinhas = Scrapper.scrap()
     return render_template("cardapio.html", comidinhas = comidinhas)
 
 #roda a pagina do sobre
