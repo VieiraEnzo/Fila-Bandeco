@@ -2,8 +2,8 @@ from curses.ascii import NUL
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_session import Session
 import control
+#from scrapper import Scrapper 
 
-comidinhas = ["arroz","arroz","arroz","arroz","arroz","arroz","arroz"]
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
@@ -18,6 +18,7 @@ def index():
 #Roda a pagina do cardapio
 @app.route("/cardapio")
 def cardapio():
+    #comidinhas = Scrapper.scrap
     return render_template("cardapio.html", comidinhas = comidinhas)
 
 #roda a pagina do sobre
@@ -61,23 +62,9 @@ def agendamento():
     if session["alunoLogado"] == None:
         return redirect(url_for('index'))
     else:
-<<<<<<< HEAD
         sessao = control.sessaoControle.pegarTodos()
         return render_template("agendamento.html", sessaos = sessao)
     
-=======
-        return render_template("agendamento.almoco.html")
-
-
-@app.route("agendamento_refeicao")
-def agendamento_jantar():
-    horario = request.form.get("horario")
-    return a.agendar_aluno(horario)
-
-
-
-
->>>>>>> 3d54eb67b8701d81133a8d2e06413295fd74a531
 
 #Funcao para validar o Login de um Aluno
 @app.route("/login_aluno", methods = ["POST"])

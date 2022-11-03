@@ -1,3 +1,4 @@
+'''
 from bs4 import BeautifulSoup   
 import requests
 
@@ -22,3 +23,4 @@ class Scrapper:
         for i in alimentos:
             comidinhas.append(" ".join(i.text.split())) 
         return comidinhas
+'''
