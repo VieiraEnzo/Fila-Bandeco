@@ -117,16 +117,22 @@ def atendimento():
 
 @app.post("/regis_atendimento")
 def cadastro_atendimento():
+    fetch = False
     tipoAtendimento = request.form["tipo"]
     cpf = request.form["cpf"]
     id_operador = session["operadorLogado"].get_id_operador()
-    if(tipoAtendimento == 2):
+    if(tipoAtendimento == '2'):
         controle = control.atendimentoControle()
-        fk_id_sessao = control.sessaoControle.pegaValida()
-        fk_id_aluno = control.alunoControle.pegaPorCpf()
-        return controle.registrar_atendimento(tipoAtendimento, fk_id_aluno, fk_id_sessao, id_operador)
+        fk_id_sessao = control.sessaoControle.pegaPorUnidade(session["operadorLogado"].get_unidade())
+        fk_id_aluno = control.alunoControle.pegarPorCpf(cpf)
+        fetch = controle.registrar_atendimento_online(tipoAtendimento, fk_id_aluno, fk_id_sessao, id_operador) 
     else:
-        pass
+        
+
+    if(fetch == True):
+        return redirect(url_for('atendimento'))
+    else:
+        return redirect(url_for('index'))
 
 #Realiza o logout
 @app.route("/logout")

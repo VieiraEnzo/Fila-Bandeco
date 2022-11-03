@@ -1,5 +1,5 @@
 from ctypes import sizeof
-from flask import render_template
+from flask import render_template, redirect, url_for
 import model
 import dao
 
@@ -46,8 +46,10 @@ class alunoControle:
             return render_template("index.html", erro = "erroCadastro")
 
     
-    def agendar_aluno(self):
-        pass
+    @staticmethod
+    def pegarPorCpf(cpf):
+        fetch = dao.AlunoDAO.pegarPorCpf(cpf,)
+        return fetch[0][0]
 
 class sessaoControle:
     def __init__(self):
@@ -58,6 +60,11 @@ class sessaoControle:
     def pegarTodos():
         fetch = dao.SessaoDAO.pegarTodos()
         return fetch
+    
+    @staticmethod
+    def pegaPorUnidade(unidade):
+        fetch = dao.SessaoDAO.pegarPorUnidade(unidade)
+        return fetch[0][1]
 
 class agendamentoControle:
     def __init__(self):
@@ -103,20 +110,20 @@ class operadorControle:
 class atendimentoControle():
     def __init__(self):
         self.atendimento = model.Atendimento()
-        self.atendimentoDAO = dao.OperadorDAO()
+        self.atendimentoDAO = dao.AtendimentoDAO()
 
     def validaAgendamento():
         pass
 
     
-    def registrar_atendimento(self, tipoAtendimento, fk_id_aluno, fk_id_sessao, id_operador):
+    def registrar_atendimento_online(self, tipoAtendimento, fk_id_aluno, fk_id_sessao, id_operador):
         self.atendimento.set_tipoAtendimento(tipoAtendimento)
         self.atendimento.set_fk_id_aluno(fk_id_aluno)
         self.atendimento.set_fk_id_sessao(fk_id_sessao)
         self.atendimento.set_fk_id_operador(id_operador)
         userId = self.atendimentoDAO.inserir(self.atendimento)
         if(userId > 0):
-            self.agendamento.set_id_agendamento = userId
+            self.atendimento.set_id_atendimento = userId
             return True
         else:
             #adicionar exceção, pois como else não funciona

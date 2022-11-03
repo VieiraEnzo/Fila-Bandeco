@@ -19,9 +19,20 @@ class AlunoDAO:
 
         return fetch
 
+    @staticmethod
+    def pegarPorCpf(cpf):
+        fetch = c.execute("select id_aluno from aluno where cpf = ?", (cpf,)).fetchall()
+        conn.commit()
+
+        return fetch
+
 class SessaoDAO:
     def pegarTodos():
         fetch = c.execute("select id_sessao, dtInicioSessao, dtFimSessao, statusSessao, cardapio, unidade from sessao inner join refeicao on sessao.fk_id_refeicao = refeicao.id_refeicao").fetchall()
+        conn.commit()
+    
+    def pegarPorUnidade(unidade):
+        fetch = c.execute("select id_sessao, id_refeicao from sessao inner join refeicao on sessao.fk_id_refeicao = refeicao.id_refeicao where unidade = ? and statusSessao = 'Válida'", (unidade,)).fetchall()
         conn.commit()
 
         return fetch
@@ -48,6 +59,7 @@ class OperadorDAO:
         fetch = c.execute("select * from operador where cpf = ? and senha = ? ", (operador.get_cpf(), operador.get_senha())).fetchall()
         conn.commit()
 
+        print(fetch)
         return fetch
 
 class AtendimentoDAO:

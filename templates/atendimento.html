@@ -20,7 +20,7 @@
         <li><a href="/sobre">SOBRE NÓS</a></li>
       </ul>
   </nav>
-<h1>Welcome {{session["operadorLogado"].get_nome()}}{{erro}}</h1>
+<h1>Welcome {{session["operadorLogado"].get_unidade()}}{{erro}}</h1>
 <div class="contents">
     <h1 class="principal">Registrar alunos:</h1>
     <div class="registros">
@@ -29,7 +29,7 @@
 <!--   adicionar variavel para o paragrafo de confirmação, de acordo com o input do form de cpf abaixo, da forma que acharem mais agradável esteticamente-->
   <br>
    <div class="nossoform">
-    <form class="register" action="/regis_atendimento">
+    <form class="register" action="/regis_atendimento" method="POST">
       <label for="local">Selecione o tipo de atendimento:</label>
       <br>
       <select name="tipo" id="tipo">

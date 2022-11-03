@@ -108,7 +108,7 @@ class Operador:
     def set_id_operador(self, var):
         self.__id_operador = var
 
-    def get__id_operador(self):
+    def get_id_operador(self):
         return self.__id_operador
     
     def set_nome(self, var):
@@ -142,7 +142,7 @@ class Operador:
         return self.__senha
 
     def set_unidade(self, var):
-        self.__senha = var
+        self.__unidade = var
 
     def get_unidade(self):
         return self.__unidade

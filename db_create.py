@@ -70,7 +70,7 @@ c.execute('''
 
 c.execute('''
         CREATE TABLE atendimento(
-            id_atendimento INTEGER AUTO_INCREMENT primary key,
+            id_atendimento INTEGER PRIMARY KEY AUTOINCREMENT,
             dtAtendimento timestamp default current_timestamp not null,
             tipoAtendimento varchar(200),
             fk_id_aluno bigint unsigned not null,
