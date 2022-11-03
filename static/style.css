@@ -90,6 +90,17 @@ form, .box, .caixinha {
   border-radius: 2em;
   margin-left: 60%;
 }
+
+.register-atend{
+  box-shadow: none;
+  display:flex;
+  align-items: center;
+  width:100%;
+  background: rgba(217, 217, 217, 0.09);
+  padding: 4%;
+  border-radius: 2em;
+  margin-left: 60%;
+}
 .nossoform{
   display: flex;
 }
@@ -148,7 +159,16 @@ input{
   background: none;
   display: flex-box;
   justify-content: center;
-}
+} 
+#tipo{
+  height: 44px;
+  border: none;
+  overflow: hidden;
+  background: none;
+  display: flex-box;
+  justify-content: center;
+}  
+
 #refeicao{
   height: 44px;
   border: none;
@@ -177,6 +197,11 @@ input{
 #local: :-moz-focus-inner {
   border: 0;
 }
+
+#tipo: :-moz-focus-inner {
+  border: 0;
+}
+
 #refeicao: :-moz-focus-inner {
   border: 0;
 }
@@ -189,7 +214,11 @@ input{
 
 #refeicao :focus {
   outline: none;
-}
+} 
+
+#tipo :focus {
+  outline: none;
+} 
 #local :focus {
   outline: none;
 }
@@ -213,6 +242,20 @@ input{
   background-color: rgba(210, 86, 35, 1);
 
 }
+#tipo option{
+  width: auto;
+  font-size: 1.2em;
+  padding: 5%;
+  text-align: center;
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+  border:none;
+  border-radius: 5px;
+  background-color: rgba(210, 86, 35, 1);
+
+}
+
 #refeicao option{
   width: 25%;
   font-size: 1.2em;

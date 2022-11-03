@@ -31,6 +31,7 @@
         Seja bem vindo, {{session["alunoLogado"].get_nome()}}{{erro}}
       </h1>
       <h2 class="principal">Realize o agendamento de sua refeição:</h2>
+      <a href="/menu_agendamento">Ver agendamentos</a>
 
   <div class="nossoform">
     <form class="agenda" action = "/agendamento" method = "post">
@@ -50,36 +51,35 @@
       </select>
       <br>
       <button type="submit" class="pesquisar">ver horários disponíveis</button>
+      <div>
+        <table>
+          <thead>
+            <th>DtInicio</th>
+            <th>DtFim</th> 
+            <th>StatusSessao</th> 
+            <th>Unidade</th>
+            <th>Cardapio</th>
+            <th></th>
+          </thead>
+          <tbody>
+            {% for sessao in sessaos %}
+            <tr>
+              <td>{{sessao[1]}}</td>
+              <td>{{sessao[2]}}</td>
+              <td>{{sessao[3]}}</td>
+              <td>{{sessao[5]}}</td>
+              <td>{{sessao[4]}}</td>
+              <td>
+                <a href="regis_agendamento?key={{sessao[0]}}">Agendar</a>
+              </td>
+            </tr>
+            {% endfor%}
+          </tbody>
+        </table>
+      </div><!--nossoform-->
     </form>
       <h2 class="confirmação"></h2>
   </div>
-  <div class="nossoform">
-    <table>
-      <thead>
-        <th>DtInicio</th>
-        <th>DtFim</th> 
-        <th>StatusSessao</th> 
-        <th>Unidade</th>
-        <th>Cardapio</th>
-        <th></th>
-      </thead>
-      <tbody>
-        {% for sessao in sessaos %}
-        <tr>
-          <td>{{sessao[1]}}</td>
-          <td>{{sessao[2]}}</td>
-          <td>{{sessao[3]}}</td>
-          <td>{{sessao[5]}}</td>
-          <td>{{sessao[4]}}</td>
-          <td>
-            <a href="regis_agendamento?key={{sessao[0]}}">Agendar</a>
-          </td>
-        </tr>
-        {% endfor%}
-      </tbody>
-    </table>
-  </div><!--nossoform-->
-
   </div>
 </body>
 </html>

@@ -45,12 +45,12 @@
 <!--   adicionar variavel para o paragrafo de confirmação, de acordo com o input do form de cpf abaixo, da forma que acharem mais agradável esteticamente-->
   <br>
    <div class="nossoform">
-    <form class="register" action="/regis_atendimento" method="POST">
+    <form class="register-atend" action="/regis_atendimento" method="POST">
       <label for="local">Selecione o tipo de atendimento:</label>
       <br>
-      <select name="tipo" id="tipo">
-        <option value="1">Fila Online</option>
-        <option value="2">Fila Física</option>      
+      <select name="tipo" id="tipo" multiple>
+        <option value="1">Online</option>
+        <option value="2">Física</option>      
       </select> 
       <br><label for="cpf">CPF:</label>
       <input type="text" name="cpf" id="cpf" placeholder="Ex.: 000.000.000-00">

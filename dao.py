@@ -32,7 +32,7 @@ class SessaoDAO:
         fetch = c.execute("select id_sessao, dtInicioSessao, dtFimSessao, statusSessao, cardapio, unidade from sessao inner join refeicao on sessao.fk_id_refeicao = refeicao.id_refeicao").fetchall()
 
         conn.commit()
-        
+
         return fetch
     
     @staticmethod
@@ -63,6 +63,13 @@ class AgendamentoDAO:
     def invalidaStatus(id_aluno, id_sessao):
         c.execute("update agendamento set statusAgendamento = 'Fechado' where fk_id_aluno = ? and fk_id_sessao = ?", (id_aluno, id_sessao,)).fetchall()
         conn.commit()
+
+    @staticmethod
+    def pegarPorId(id_aluno):
+        fetch = c.execute("select * from agendamento where fk_id_aluno = ?", (id_aluno,)).fetchall()
+        conn.commit()
+
+        return fetch
 
 class OperadorDAO:
     def efetuarLogin(self, operador):

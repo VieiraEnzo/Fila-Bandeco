@@ -91,6 +91,10 @@ class agendamentoControle:
     @staticmethod
     def invalidaStatus(id_aluno, id_sessao):
         return dao.AgendamentoDAO.invalidaStatus(id_aluno, id_sessao)
+    
+    @staticmethod
+    def pegarPorId(id_aluno):
+        return dao.AgendamentoDAO.pegarPorId(id_aluno)
 
 
 class operadorControle:

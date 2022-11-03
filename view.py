@@ -92,6 +92,14 @@ def cadastro_agendamento():
     else:
         return redirect(url_for('agendamento'))
 
+@app.route("/menu_agendamento")
+def menu_agendamentos():
+    if session["alunoLogado"] == None:
+        return redirect(url_for('index'))
+    else:
+        agendamento = control.agendamentoControle.pegarPorId(session["alunoLogado"].get_id_aluno())
+        return render_template("menu_agendamento.html", agendamentos = agendamento)
+
 @app.route("/operador")
 def atendentePage():
     return render_template("operador.html")
