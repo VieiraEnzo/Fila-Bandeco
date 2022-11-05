@@ -1,5 +1,8 @@
 import sqlite3
 
+#Tabelas utilizadas na construção do sistema
+#Não existe uma interface de CRUD para o admnistrador, refeição e sessão, pois não houve tempo suficiente, logo eles foram instanciados manualmente
+
 conn = sqlite3.connect('filaRU.db')
 c = conn.cursor()
 
